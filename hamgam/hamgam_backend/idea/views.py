@@ -9,14 +9,17 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import status, serializers
 from rest_framework.decorators import api_view
 from rest_framework import generics
-from .serializers import IdeaListSerializer, IdeaDetailSerializer, IdeaUpdateSerializer
-from .models import Idea  
+from .serializers import IdeaListSerializer, CommentSerializer,IdeaDetailSerializer, IdeaUpdateSerializer
+from .models import Idea , Comment
 
 
 class ListIdea(generics.ListAPIView):
     queryset = Idea.objects.filter(status='published')
     serializer_class = IdeaListSerializer
 
+class CreateIdea(generics.CreateAPIView):
+    queryset = Idea.objects.all()
+    serializer_class = IdeaDetailSerializer
 
 class DetailIdea(generics.RetrieveAPIView):
     queryset = Idea.objects.filter(status='published')
@@ -33,6 +36,35 @@ class DeleteIdea(generics.DestroyAPIView):
     serializer_class = IdeaDetailSerializer
 
 
+#################################
+#################################
+###########COMMENTS###########
+
+class ListComment(generics.ListAPIView):
+    queryset = Comment.objects.filter(status=True)
+    serializer_class = CommentSerializer
+
+class CreateComment(generics.CreateAPIView):
+    queryset = Comment.objects.filter(status=True)
+    serializer_class = CommentSerializer
+
+
+
+class DetailComment(generics.RetrieveAPIView):
+    queryset = Comment.objects.filter(status=True)
+    serializer_class = CommentSerializer
+
+
+class UpdateComment(generics.UpdateAPIView):
+    queryset = Comment.objects.filter(status=True)
+    serializer_class = CommentSerializer
+
+
+class DeleteComment(generics.DestroyAPIView):
+    queryset = Comment.objects.filter(status=True)
+    serializer_class = CommentSerializer
+###############################
+###############################
 
 @api_view(['GET', 'POST', "DELETE"])
 def idea_list(request):

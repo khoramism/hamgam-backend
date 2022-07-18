@@ -33,7 +33,7 @@ class Idea(models.Model):
 	
     #sub_cat = models.ManyToManyField(SubCategory)
     
-    comments = models.ManyToManyField(Comment,related_name='idea_comments', blank=True)
+    #comments = models.ManyToManyField(Comment,related_name='idea_comments', blank=True)
     
     likes = models.ManyToManyField(Account, related_name='idea_likes', blank=True)
 

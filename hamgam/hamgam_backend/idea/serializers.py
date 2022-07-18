@@ -12,8 +12,10 @@ class CategorySerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
-        #exclude = ('updated', 'created', 'active')
+        #fields = '__all__'
+        exclude = ('updated', 'created')
+
+
 
 class IdeaSkillSerializer(serializers.ModelSerializer):
     creator = CreaterIdeaSerializer(read_only=True, many=False)

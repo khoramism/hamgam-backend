@@ -10,7 +10,7 @@ from rest_framework import generics
 #from .permissions import UpdateOwnProfile
 from . import serializers
 from .models import Account
-
+from .serializers import JustEmailSerializer
 
 
 # Create your views here.
@@ -33,3 +33,11 @@ class AccountLoginApiView(ObtainAuthToken):
     '''Handle creating accounts authentication tokens!'''
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
+
+class AccountUsersListView(generics.ListAPIView):
+    queryset = Account.objects.filter(is_active=True)
+    serializer_class = JustEmailSerializer
+
+class AccountDetailView(generics.RetrieveAPIView):
+    queryset = Account.objects.filter(is_active=True)
+    serializer_class = JustEmailSerializer

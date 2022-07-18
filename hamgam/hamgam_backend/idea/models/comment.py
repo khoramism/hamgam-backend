@@ -13,8 +13,8 @@ class Comment(TimeStampedModel):
 
     content = models.TextField()
 
-    commentor = models.ForeignKey(Account, on_delete=models.CASCADE)
+    commentor = models.ForeignKey(Account, on_delete=models.CASCADE)   
 
-    def get_absolute_url(self):
-        return reverse('blog:detail', kwargs={"pk": self.pk})
-    
+    idea =  models.ForeignKey("idea.Idea", on_delete=models.CASCADE, related_name='commments_idea')
+
+    status = models.BooleanField(default=False)

@@ -38,8 +38,8 @@ class CreaterIdeaSerializer(serializers.ModelSerializer):
 class JustEmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ('id','email', 'avatar')
-        
+        fields = ('id','email','avatar')
+        optional_fields = ['id','avatar' ]
 #
 #class LikeSerializer(serializers.ModelSerializer):
 #    class Meta:

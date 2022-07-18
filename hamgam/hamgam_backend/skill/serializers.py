@@ -9,7 +9,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         exclude = ('updated', 'created', 'active')
-
+        optional_fields = ['publish', 'slug', 'summary', 'id']
 
 class IdeaSkillSerializer(serializers.ModelSerializer):
     creator = CreaterIdeaSerializer(read_only=True, many=False)
@@ -35,8 +35,29 @@ class SkillDetailSerializer(serializers.ModelSerializer):
         model = Skill
         fields = '__all__'
 
-class SkillListSerializer(serializers.ModelSerializer):
 
+
+class SkillCreateSerializer(serializers.ModelSerializer):
+    owner = JustEmailSerializer(read_only=False, many=False)
+    users = JustEmailSerializer(read_only=False, many=True, required=False)
+    ideas = IdeaSkillSerializer(read_only=True, many=True, required=False)
+    categories = CategorySerializer(read_only=False, many=True, required=False)
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+
+
+class SkillUpdateSerializer(serializers.ModelSerializer):
+    owner = JustEmailSerializer(read_only=False, many=False)
+    users = JustEmailSerializer(read_only=False, many=True)
+    ideas = IdeaSkillSerializer(read_only=True, many=True)
+    categories = CategorySerializer(read_only=False, many=True)
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+class SkillListSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(read_only=True, many=True)
     class Meta:
         model = Skill
