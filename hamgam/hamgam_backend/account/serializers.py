@@ -6,7 +6,7 @@ class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
         #fields = ('id','email', 'name', 'password', 'phone', 'bio', 'avatar', 'is_staff', 'date_joined','last_login','last_login', 'is_active')
-        exclude = ('is_staff', 'date_joined', 'last_login')
+        exclude = ('is_staff', 'date_joined','groups',)
         # we need to make password write only in order for nobody to see  
         extra_kwargs = {
             'password': {

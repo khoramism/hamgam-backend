@@ -10,7 +10,7 @@ from rest_framework import generics
 #from .permissions import UpdateOwnProfile
 from . import serializers
 from .models import Account
-from .serializers import JustEmailSerializer
+from .serializers import JustEmailSerializer, AccountSerializer
 
 
 # Create your views here.
@@ -40,4 +40,4 @@ class AccountUsersListView(generics.ListAPIView):
 
 class AccountDetailView(generics.RetrieveAPIView):
     queryset = Account.objects.filter(is_active=True)
-    serializer_class = JustEmailSerializer
+    serializer_class = AccountSerializer
