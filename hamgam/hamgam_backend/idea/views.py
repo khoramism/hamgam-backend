@@ -9,8 +9,8 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import status, serializers
 from rest_framework.decorators import api_view
 from rest_framework import generics
-from .serializers import IdeaListSerializer, CommentSerializer,IdeaDetailSerializer, IdeaUpdateSerializer
-from .models import Idea , Comment
+from .serializers import IdeaListSerializer, LikeSerializer,CommentSerializer,IdeaDetailSerializer, IdeaUpdateSerializer,IdeaCreateSerializer
+from .models import Idea , Comment, Like 
 
 
 class ListIdea(generics.ListAPIView):
@@ -19,7 +19,7 @@ class ListIdea(generics.ListAPIView):
 
 class CreateIdea(generics.CreateAPIView):
     queryset = Idea.objects.all()
-    serializer_class = IdeaDetailSerializer
+    serializer_class = IdeaCreateSerializer
 
 class DetailIdea(generics.RetrieveAPIView):
     queryset = Idea.objects.filter(status='published')
@@ -64,7 +64,24 @@ class DeleteComment(generics.DestroyAPIView):
     queryset = Comment.objects.filter(status=True)
     serializer_class = CommentSerializer
 ###############################
-###############################
+########### LIKES #############
+
+class LikeList(generics.ListCreateAPIView):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+
+class LikeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
+
+
+
+
+
+
+
+
+
 
 @api_view(['GET', 'POST', "DELETE"])
 def idea_list(request):

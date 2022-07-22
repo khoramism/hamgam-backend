@@ -3,6 +3,7 @@ from .models import Skill
 from account.serializers import JustEmailSerializer
 #from idea.serializers import IdeaSkillSerializer
 from idea.models import Category, Comment, Idea
+from account.models import Account
 from account.serializers import CreaterIdeaSerializer, JustEmailSerializer
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -38,10 +39,12 @@ class SkillDetailSerializer(serializers.ModelSerializer):
 
 
 class SkillCreateSerializer(serializers.ModelSerializer):
-    owner = JustEmailSerializer(read_only=False, many=False)
-    users = JustEmailSerializer(read_only=False, many=True, required=False)
-    ideas = IdeaSkillSerializer(read_only=True, many=True, required=False)
-    categories = CategorySerializer(read_only=False, many=True, required=False)
+    #owner = serializers.PrimaryKeyRelatedField(queryset=Account.objects.all(), many=False)
+    #owner = serializers.RelatedField(queryset=Account.objects.all(), many=False)
+    #users = serializers.RelatedField(queryset=Account.objects.all(), many=True)
+    #users = JustEmailSerializer(read_only=False, many=True, required=False)
+    #ideas = IdeaSkillSerializer(read_only=True, many=True, required=False)
+    #categories = CategorySerializer(read_only=False, many=True, required=False)
     class Meta:
         model = Skill
         fields = '__all__'
@@ -49,13 +52,13 @@ class SkillCreateSerializer(serializers.ModelSerializer):
 
 
 class SkillUpdateSerializer(serializers.ModelSerializer):
-    owner = JustEmailSerializer(read_only=False, many=False)
-    users = JustEmailSerializer(read_only=False, many=True)
-    ideas = IdeaSkillSerializer(read_only=True, many=True)
-    categories = CategorySerializer(read_only=False, many=True)
+    #owner = JustEmailSerializer(read_only=False, many=False)
+    #users = JustEmailSerializer(read_only=False, many=True)
+    #ideas = IdeaSkillSerializer(read_only=True, many=True)
+    #categories = CategorySerializer(read_only=False, many=True)
     class Meta:
         model = Skill
-        fields = '__all__'
+        exclude = ('owner',)
 
 class SkillListSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(read_only=True, many=True)

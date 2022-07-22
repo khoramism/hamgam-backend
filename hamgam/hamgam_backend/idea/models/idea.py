@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.utils.translation import gettext as _
 from config.shared import TimeStampedModel, Postable
 from.comment import Comment
+from .like import Like
 from .category import Category
 #from .sub_category import SubCategory
 from skill.models import Skill
@@ -33,13 +34,13 @@ class Idea(models.Model):
 	
     #sub_cat = models.ManyToManyField(SubCategory)
     
-    #comments = models.ManyToManyField(Comment,related_name='idea_comments', blank=True)
+    comments = models.ForeignKey(Comment, on_delete=models.CASCADE,related_name='idea_comments', blank=True, null=True)
     
-    likes = models.ManyToManyField(Account, related_name='idea_likes', blank=True)
+    likes = models.ForeignKey(Like, on_delete=models.CASCADE,related_name='idea_likes', blank=True)
 
     skills = models.ManyToManyField(Skill, related_name='idea_skills')
 
-    users = models.ManyToManyField('account.Account', related_name='idea_users',)
+    users = models.ManyToManyField('account.Account', related_name='idea_users',blank=True)
 
 
     @admin.display(
@@ -50,4 +51,11 @@ class Idea(models.Model):
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
-    
+	
+    def __str__(self):
+        return self.title + ' BY ' +  str(self.creator.email) 
+
+    class Meta:
+    	ordering = ('title', )
+    	verbose_name = 'ایده'
+    	verbose_name_plural = 'ایده ها '

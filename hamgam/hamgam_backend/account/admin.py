@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from . models import Account
-
+from .models import Account
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 from authemail.admin import EmailUserAdmin
 
 class MyAccountAdmin(EmailUserAdmin):
+
 	fieldsets = (
 		(None, {'fields': ('email', 'password')}),
 		('Personal Info', {'fields': ('first_name', 'last_name', 'bio', 'avatar')}),

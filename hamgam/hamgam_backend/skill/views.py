@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics 
 from .models import Skill 
-from .serializers import SkillListSerializer, SkillDetailSerializer, SkillCreateSerializer, SkillUpdateSerializer
+from .serializers import SkillListSerializer,SkillCreateSerializer, SkillDetailSerializer, SkillCreateSerializer, SkillUpdateSerializer
 # Create your views here.
 
 
@@ -16,7 +16,7 @@ class DetailSkill(generics.RetrieveAPIView):
 
 class CreateSkill(generics.CreateAPIView):
     queryset = Skill.objects.all()
-    serializer_class = SkillUpdateSerializer
+    serializer_class = SkillCreateSerializer
 
 class UpdateSkill(generics.UpdateAPIView):
     queryset = Skill.objects.all()

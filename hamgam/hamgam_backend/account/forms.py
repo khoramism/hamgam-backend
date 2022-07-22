@@ -13,9 +13,6 @@ import logging
 #from ..config import LOG_PATH
 #logger = CommonLogger(name=__name__, log_file=LOG_PATH, level=logging.DEBUG)
 
-
-
-
 class RegistrationForm(forms.ModelForm):
 	password = forms.CharField(label='Password', widget=forms.PasswordInput)
 	
@@ -38,7 +35,7 @@ class UserCreationForm(forms.ModelForm):
 
 	class Meta: 
 		model = Account
-		fields =  ('email', 'username', 'phone', 'avatar', 'password1', 'password2')
+		fields =  ('email',  'phone', 'avatar', 'password1', 'password2')
 
 	def __init__(self, *args,**kwargs):
 		super().__init__(*args,**kwargs)
@@ -68,18 +65,6 @@ class UserCreationForm(forms.ModelForm):
 
 		return user 
 
-
-class UserChangeForm(forms.ModelForm):
-	password = ReadOnlyPasswordHashField()
-
-	class Meta:
-		model = Account
-		fields = ('email', 'username', 'phone', 'avatar', 'password')
-
-	def clean_password(self):
-		# regardless of what the user provides, return the initial Value.
-		# This is done here, rather than on the field, because the feild does not have access to the initial value 
-		return self.initial['password']
 
 
 
