@@ -29,7 +29,7 @@ SECRET_KEY ='lacaa612c*sac56a1212^#&2de2d4w86'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['178.63.240.70','88.199.235.84','0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -188,8 +188,8 @@ STATIC_URL = '/static/'
 
  # Cors 
 
-CORS_ORIGIN_ALLOW_ALL = True
-#CSRF_TRUSTED_ORIGINS = ['localhost:3000']
+#CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ['localhost']
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
