@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('mamad', views.mamad),
 
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
         # ...
     path('__debug__/', include('debug_toolbar.urls')),
     path('api/ideas/', include('idea.urls')),

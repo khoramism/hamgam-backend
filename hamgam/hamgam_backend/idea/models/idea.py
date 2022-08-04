@@ -36,7 +36,7 @@ class Idea(models.Model):
     
     comments = models.ForeignKey(Comment, on_delete=models.CASCADE,related_name='idea_comments', blank=True, null=True)
     
-    likes = models.ForeignKey(Like, on_delete=models.CASCADE,related_name='idea_likes', blank=True)
+    likes = models.ForeignKey(Like, on_delete=models.CASCADE,related_name='idea_likes', blank=True,null=True)
 
     skills = models.ManyToManyField(Skill, related_name='idea_skills')
 
