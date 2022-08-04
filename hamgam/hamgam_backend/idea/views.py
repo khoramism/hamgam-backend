@@ -48,6 +48,8 @@ class CreateComment(generics.CreateAPIView):
     queryset = Comment.objects.filter(status=True)
     serializer_class = CommentSerializer
 
+######################
+######################
 
 
 class DetailComment(generics.RetrieveAPIView):

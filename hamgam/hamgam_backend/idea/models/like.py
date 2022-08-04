@@ -10,3 +10,6 @@ from account.models import Account
 class Like(models.Model):
     liker = models.ForeignKey('account.Account', on_delete=models.CASCADE, blank=False)
     idea = models.ForeignKey('idea.Idea', on_delete=models.CASCADE, blank=False)
+    	
+    def __str__(self):
+        return self.liker.email + ' LIKES ' +  str(self.idea.title) 

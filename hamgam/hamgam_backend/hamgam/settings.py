@@ -30,7 +30,11 @@ SECRET_KEY ='lacaa612c*sac56a1212^#&2de2d4w86'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+#<<<<<<< HEAD
 ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir']
+#=======
+#ALLOWED_HOSTS = ['0.0.0.0']
+#>>>>>>> 65426fe87fbeacbf765924ede6849e747392e57c
 
 
 # Application definition
@@ -192,6 +196,7 @@ STATIC_URL = '/static/'
  # Cors 
 
 #CORS_ORIGIN_ALLOW_ALL = True
+#<<<<<<< HEAD
 CORS_ALLOWED_ORIGINS = [
     #"https://example.com",
     #"https://sub.example.com",\
@@ -205,9 +210,9 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "http:/localhost:80",
-]
+#CSRF_TRUSTED_ORIGINS = [
+ #   "http:/localhost:80",
+#]
 
 CORS_ALLOW_HEADERS = [
     "accept",
@@ -220,6 +225,9 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+#=======
+#CSRF_TRUSTED_ORIGINS = ['localhost']
+#>>>>>>> 65426fe87fbeacbf765924ede6849e747392e57c
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

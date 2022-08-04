@@ -73,7 +73,7 @@ class IdeaDetailSerializer(serializers.ModelSerializer):
     creator = CreaterIdeaSerializer(read_only=True, many=False)
     users = JustEmailSerializer(read_only=True, many=True)
     cat = CategorySerializer(read_only=True, many=True)
-    likes = LikeIdeaSerializer(read_only=True, many=False)
+    #likes = LikeIdeaSerializer(read_only=True, many=False)
     comments = CommentIdeaSerializer(read_only=True, many=False)
     class Meta:
         model = Idea
