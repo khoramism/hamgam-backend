@@ -49,7 +49,7 @@ class IdeaUpdateSerializer(serializers.ModelSerializer):
     #skills = SkillIdeaSerializer(read_only=True, many=True)
     #creator = CreaterIdeaSerializer(read_only=True, many=False)
     #cat = CategorySerializer(read_only=True, many=True)
-    #likes = LikeIdeaSerializer(read_only=True, many=False)
+    likes = LikeIdeaSerializer(read_only=True, many=False)
     class Meta:
         model = Idea
         #fields = '__all__'
