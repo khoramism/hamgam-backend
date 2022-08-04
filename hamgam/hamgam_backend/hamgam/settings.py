@@ -134,7 +134,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = '/home/mehdi/source/stat/static'
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -190,6 +191,7 @@ EMAIL_HOST_USER = os.environ.get('AUTHEMAIL_EMAIL_HOST_USER') or '<YOUR EMAIL_HO
 EMAIL_HOST_PASSWORD = os.environ.get('AUTHEMAIL_EMAIL_HOST_PASSWORD') or '<YOUR EMAIL_HOST_PASSWORD HERE>'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
 STATIC_URL = '/static/'
 
 
@@ -279,12 +281,12 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_email')
 
 
 # Media 
-
+BASE_MEDIA_DIR = '/home/mehdi/source/images'
 MEDIA_URL = "/media/"
 # any file field upload by default
-MEDIA_ROOT =  f"{BASE_DIR}/cdn_test/media"
+MEDIA_ROOT =  f"{BASE_MEDIA_DIR}/media"
 
-PROTECTED_MEDIA =  f"{BASE_DIR}/cdn_test/protected"
+PROTECTED_MEDIA =  f"{BASE_MEDIA_DIR}/protected"
 
 
 # Caching Using Redis 

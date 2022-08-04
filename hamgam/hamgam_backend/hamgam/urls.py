@@ -13,3 +13,4 @@ urlpatterns = [
     path('api/accounts/', include('account.urls')),
 
 ]
+

@@ -21,9 +21,6 @@ class Account(EmailAbstractUser):
 	last_login = models.DateTimeField(null=True)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-
-
-
 	objects = EmailUserManager()
 	USERNAME_FIELD = 'email'
 
