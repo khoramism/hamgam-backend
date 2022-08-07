@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY ='lacaa612c*sac56a1212^#&2de2d4w86'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #<<<<<<< HEAD
 ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir']
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'authemail',
+    'ckeditor_uploader',
+    'ckeditor', 
     # CORS
     'corsheaders',
     'django_extensions',
@@ -60,7 +62,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'idea.apps.IdeaConfig',
     'skill.apps.SkillConfig',
-]
+    'docs.apps.DocsConfig',
+]   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,7 +171,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+DEFAULT_FROM_EMAIL = 'info@ham-ghadam.ir'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -179,18 +182,17 @@ ALLOW_UNICODE_SLUGS = True
 
 #### EMIAL STUFF
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
 
-EMAIL_FROM = os.environ.get('AUTHEMAIL_DEFAULT_EMAIL_FROM') or '<YOUR DEFAULT_EMAIL_FROM HERE>'
-EMAIL_BCC = os.environ.get('AUTHEMAIL_DEFAULT_EMAIL_BCC') or '<YOUR DEFAULT_EMAIL_BCC HERE>'
+#EMAIL_FROM = os.environ.get('AUTHEMAIL_DEFAULT_EMAIL_FROM') or '<YOUR DEFAULT_EMAIL_FROM HERE>'
+#EMAIL_BCC = os.environ.get('AUTHEMAIL_DEFAULT_EMAIL_BCC') or '<YOUR DEFAULT_EMAIL_BCC HERE>'
 
-EMAIL_HOST = os.environ.get('AUTHEMAIL_EMAIL_HOST') or 'smtp.gmail.com'
-EMAIL_PORT = os.environ.get('AUTHEMAIL_EMAIL_PORT') or 587
-EMAIL_HOST_USER = os.environ.get('AUTHEMAIL_EMAIL_HOST_USER') or '<YOUR EMAIL_HOST_USER HERE>'
-EMAIL_HOST_PASSWORD = os.environ.get('AUTHEMAIL_EMAIL_HOST_PASSWORD') or '<YOUR EMAIL_HOST_PASSWORD HERE>'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+#EMAIL_HOST = 'localhost'   
+#EMAIL_PORT = 25
+#EMAIL_HOST_USER = 'info'
+#EMAIL_HOST_PASSWORD = ''
+
 
 STATIC_URL = '/static/'
 
@@ -302,3 +304,21 @@ PROTECTED_MEDIA =  f"{BASE_MEDIA_DIR}/protected"
 #        }
 #    },
 #}
+
+
+CKEDITOR_BASEPATH = "/home/mehdi/source/stat/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        #'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        'height': 600,
+        'width': 1000, 
+        'tabSpaces': 4,
+        #'skin': 'monoo color',
+        # Toolbar Style
+        # Add Code Block Plug-ins
+        'extraPlugins': ','.join(['codesnippet',]),
+    },
+}
+CKEDITOR_IMAGE_BACKEND = 'pillow' 

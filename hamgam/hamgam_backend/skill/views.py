@@ -26,3 +26,15 @@ class UpdateSkill(generics.UpdateAPIView):
 class DeleteSkill(generics.DestroyAPIView):
     queryset = Skill.objects.all()
     serializer_class = SkillDetailSerializer
+
+
+
+from django.core.mail import send_mail
+def mail_kon(request):
+    send_mail(
+    'That’s your subject',
+    'That’s your message body',
+    'info@ham-ghadam.ir',
+    ['khoramism@gmail.com'],
+    fail_silently=False,
+    )

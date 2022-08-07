@@ -16,10 +16,12 @@ from .models import Idea , Comment, Like
 class ListIdea(generics.ListAPIView):
     queryset = Idea.objects.filter(status='published')
     serializer_class = IdeaListSerializer
+    #permission_classes = (IsAuthenticatedOrReadOnly,)
 
 class CreateIdea(generics.CreateAPIView):
     queryset = Idea.objects.all()
     serializer_class = IdeaCreateSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 class DetailIdea(generics.RetrieveAPIView):
     queryset = Idea.objects.filter(status='published')
@@ -29,11 +31,13 @@ class DetailIdea(generics.RetrieveAPIView):
 class UpdateIdea(generics.UpdateAPIView):
     queryset = Idea.objects.filter(status='published')
     serializer_class = IdeaUpdateSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 class DeleteIdea(generics.DestroyAPIView):
     queryset = Idea.objects.filter(status='published')
     serializer_class = IdeaDetailSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
 #################################

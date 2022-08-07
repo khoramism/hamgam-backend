@@ -12,3 +12,4 @@ django-rest-authemail
 django-extensions
 Pillow
 autopep8
+django-ckeditor 

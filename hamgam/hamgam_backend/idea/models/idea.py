@@ -1,4 +1,3 @@
-from xml.etree.ElementTree import Comment
 from django.db import models
 from django.urls import reverse
 import datetime 

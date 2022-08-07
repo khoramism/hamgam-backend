@@ -49,7 +49,7 @@ class IdeaUpdateSerializer(serializers.ModelSerializer):
     #skills = SkillIdeaSerializer(read_only=True, many=True)
     #creator = CreaterIdeaSerializer(read_only=True, many=False)
     #cat = CategorySerializer(read_only=True, many=True)
-    likes = LikeIdeaSerializer(read_only=True, many=False)
+    #likes = JustEmailSerializer(read_only=False, many=True)
     class Meta:
         model = Idea
         #fields = '__all__'
@@ -61,6 +61,7 @@ class IdeaListSerializer(serializers.ModelSerializer):
     skills = SkillIdeaSerializer(read_only=True, many=True)
     creator = JustEmailSerializer(read_only=True, many=False)
     cat = CategorySerializer(read_only=True, many=True)
+    
     class Meta:
         model = Idea
         fields = ('id', 'title', 'creator','cat', 'skills','likes')
@@ -73,8 +74,9 @@ class IdeaDetailSerializer(serializers.ModelSerializer):
     creator = CreaterIdeaSerializer(read_only=True, many=False)
     users = JustEmailSerializer(read_only=True, many=True)
     cat = CategorySerializer(read_only=True, many=True)
-    #likes = LikeIdeaSerializer(read_only=True, many=False)
+    JustEmailSerializer(read_only=True, many=True)
     comments = CommentIdeaSerializer(read_only=True, many=False)
+    likes = JustEmailSerializer(read_only=True, many=True)
     class Meta:
         model = Idea
         fields = '__all__'
