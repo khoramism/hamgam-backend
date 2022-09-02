@@ -10,7 +10,7 @@ router = DefaultRouter()
 urlpatterns = [
     #path('', include(router.urls)),
     #path('login/', views.UserLoginApiView.as_view()),
-    path('', include('authemail.urls')),
+    #path('', include('authemail.urls')),
     path('user/all', views.AccountUsersListView.as_view(), ),
     path('user/<int:pk>/', views.AccountDetailView.as_view(), ),
     

@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 class AccountManager(BaseUserManager):
 	use_in_migrations = True 
 
-	def _create_user(self, email, username, phone,password, **extra_fields):
+	def _create_user(self, email,password, **extra_fields):
 		values = [email,username, phone]
 		field_value_map = dict(zip(self.model.REQUIRED_FIELDS, values))
 		for field_name, value in field_value_map.items():
@@ -22,19 +22,19 @@ class AccountManager(BaseUserManager):
 
 		return user 
 
-	def create_user(self, email,username,phone,password=None, **extra_fields):
+	def create_user(self, email,password=None, **extra_fields):
 		extra_fields.setdefault('is_staff', False)
 		extra_fields.setdefault('is_superuser', False)
-		return self._create_user(email, username, phone,password, **extra_fields)
+		return self._create_user(email, password, **extra_fields)
 
 	
-	def create_staff(self, email, username, phone, password=None, **extra_fields):
+	def create_staff(self, email, password=None, **extra_fields):
 		extra_fields.setdefault('is_staff', True)
 		extra_fields.setdefault('is_superuser', False)
-		return self._create_user(email, username, phone,password, **extra_fields)
+		return self._create_user(email, password, **extra_fields)
 
 
-	def create_superuser(self, email, username, phone, password=None, **extra_fields):
+	def create_superuser(self, email, password=None, **extra_fields):
 		extra_fields.setdefault('is_staff', True)
 		extra_fields.setdefault('is_superuser', True)
-		return self._create_user(email, username, phone,password, **extra_fields)
+		return self._create_user(email, password, **extra_fields)

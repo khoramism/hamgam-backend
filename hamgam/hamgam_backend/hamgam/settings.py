@@ -50,13 +50,12 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'rest_framework',
     'rest_framework.authtoken',
-    'authemail',
     'ckeditor_uploader',
     'ckeditor', 
     # CORS
     'corsheaders',
     'django_extensions',
-    
+    'rest_email_auth',
     
     # Internal 
     'account.apps.AccountConfig',
@@ -117,22 +116,22 @@ if DEBUG:
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 #DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.postgresql',
-#       'NAME': os.environ.get('POSTGRESQL_DB_NAME'),
-#       'USER': os.environ.get('POSTGRESQL_DB_USER'),
-#       'PASSWORD': os.environ.get('POSTGRESQL_DB_PASSWORD'),
-#       'HOST': os.environ.get('POSTGRESQL_DB_HOST'),
-#       'PORT': os.environ.get('POSTGRESQL_DB_PORT'),
-#   }
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
 #}
+DATABASES = {
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'hamgam',
+       'USER': 'hamnghadams',
+       'PASSWORD': 'v2ct197DWAC3*eRO',
+       'HOST': 'localhost',
+       'PORT': 5432,
+   }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -181,7 +180,7 @@ DEFAULT_FROM_EMAIL = 'info@ham-ghadam.ir'
 ALLOW_UNICODE_SLUGS = True
 
 #### EMIAL STUFF
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #EMAIL_PORT = 587
 #EMAIL_USE_TLS = True
 
@@ -269,6 +268,12 @@ LOGGING = {
 ## Coolkie Sessions 
 
 
+AUTHENTICATION_BACKENDS = [
+    'rest_email_auth.authentication.VerifiedEmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
 
 REST_FRAMEWORK = {
 	'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -277,12 +282,38 @@ REST_FRAMEWORK = {
 }
 # Email 
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_email')
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_FROM = "Hamghadam"
+EMAIL_BCC = 'khoramism@gmail.com'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, '../../../sent_email')
+EMAIL_HOST = 'mail.ham-ghadam.ir'
+
+EMAIL_PORT =  587
+
+EMAIL_HOST_USER =  'alireza@ham-ghadam.ir'
+
+EMAIL_HOST_PASSWORD =  'Ham*Cos^di'
+
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+DEFAULT_FROM_EMAIL = 'alireza@ham-ghadam.ir'
+#SERVER_EMAIL = 'info@ham-ghadam.ir'
+
+REST_EMAIL_AUTH = {
+    'EMAIL_VERIFICATION_URL': 'https://ham-ghadam.ir/verify/{key}',
+    "PASSWORD_RESET_URL": 'https://ham-ghadam.ir/reset-password/{key}',
+}
 
 
 
 # Media 
+
+
+
+
+
 BASE_MEDIA_DIR = '/home/mehdi/source/images'
 MEDIA_URL = "/media/"
 # any file field upload by default
@@ -322,3 +353,19 @@ CKEDITOR_CONFIGS = {
     },
 }
 CKEDITOR_IMAGE_BACKEND = 'pillow' 
+
+
+'''
+ DROP TABLE  account_forgetpassword CASCADE;             
+ DROP TABLE  auth_group CASCADE;                         
+ DROP TABLE  auth_group_permissions CASCADE;             
+ DROP TABLE  auth_permission CASCADE;                    
+ DROP TABLE  authemail_emailchangecode CASCADE;          
+ DROP TABLE  authemail_passwordresetcode CASCADE;        
+ DROP TABLE  authemail_signupcode CASCADE;               
+ DROP TABLE  authtoken_token CASCADE;                    
+ DROP TABLE  rest_email_auth_emailaddress CASCADE;       
+ DROP TABLE  rest_email_auth_emailconfirmation CASCADE;  
+ DROP TABLE  rest_email_auth_passwordresettoken CASCADE; 
+
+'''

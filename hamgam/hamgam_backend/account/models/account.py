@@ -1,29 +1,29 @@
 from django.db import models
 from ..managers import AccountManager
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, AbstractUser 
 from django.contrib.auth import get_user_model
 from django.utils import timezone 
 from django.urls import reverse, reverse_lazy
 
-from authemail.models import EmailUserManager, EmailAbstractUser
+#from authemail.models import EmailUserManager, EmailAbstractUser
 
 # Create your models here.
 
-class Account(EmailAbstractUser):
-	email = models.EmailField(unique=True)
+class Account(AbstractUser):
+	#email = models.EmailField(unique=True)
 	bio = models.CharField(max_length=140, blank=True, default='')
 	# date_of_birth = models.DateField(blank=True, null=True)
 	avatar = models.ImageField(blank=True, null=True)
-	is_staff = models.BooleanField(default=False)
-	is_active = models.BooleanField(default=True)
-	is_verified  = models.BooleanField(default=False)
+	#is_staff = models.BooleanField(default=False)
+	#is_active = models.BooleanField(default=True)
+	#is_verified  = models.BooleanField(default=False)
 	date_joined = models.DateTimeField(default=timezone.now)
 	last_login = models.DateTimeField(null=True)
 	first_name = models.CharField(max_length=50)
 	last_name = models.CharField(max_length=50)
-	objects = EmailUserManager()
-	USERNAME_FIELD = 'email'
-
+	#objects = AccountManager()
+	#USERNAME_FIELD = 'email'
+	#REQUIRED_FIELDS = ['passowrd']
 # https://dev.to/joshwizzy/customizing-django-authentication-using-abstractbaseuser-llg
 
 	def __str__(self):

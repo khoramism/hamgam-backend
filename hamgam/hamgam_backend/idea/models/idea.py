@@ -11,6 +11,7 @@ from .like import Like
 from .category import Category
 #from .sub_category import SubCategory
 from skill.models import Skill
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Idea(models.Model):
     
@@ -21,7 +22,7 @@ class Idea(models.Model):
     
     title = models.CharField(max_length=50)
 
-    content = models.TextField()
+    content = RichTextUploadingField()
 
     creator = models.ForeignKey("account.Account", on_delete=models.CASCADE, related_name='idea_creator')
     
@@ -42,11 +43,11 @@ class Idea(models.Model):
     users = models.ManyToManyField('account.Account', related_name='idea_users',blank=True)
 
 
-    @admin.display(
-        boolean=True,
-        ordering='pub_date',
-        description='به تازگی منتشر شده بود؟',
-    )
+    #@admin.display(
+    #    boolean=True,
+    #    ordering='pub_date',
+    #    description='به تازگی منتشر شده بود؟',
+    #)
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now

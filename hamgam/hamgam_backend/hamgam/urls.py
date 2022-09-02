@@ -13,5 +13,6 @@ urlpatterns = [
     path('api/accounts/', include('account.urls')),
     path('api/docs/', include('docs.urls')),
     path("ckeditor/", include('ckeditor_uploader.urls')), # <-- here
+    path('api/acc/', include('rest_email_auth.urls')),
 ]
 
