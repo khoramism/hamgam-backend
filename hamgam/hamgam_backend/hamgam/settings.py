@@ -50,13 +50,15 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'rest_framework',
     'rest_framework.authtoken',
+    #'rest_framework_swagger',
+    'drf_yasg',
     'ckeditor_uploader',
     'ckeditor', 
     # CORS
     'corsheaders',
     'django_extensions',
     'rest_email_auth',
-    
+    'rest_auth',
     # Internal 
     'account.apps.AccountConfig',
     'idea.apps.IdeaConfig',
@@ -174,7 +176,8 @@ DEFAULT_FROM_EMAIL = 'info@ham-ghadam.ir'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+##### SWAGGER 
+LOGIN_URL = 'https://ham-ghadam.ir/login'
 
 # URL 
 ALLOW_UNICODE_SLUGS = True
@@ -195,7 +198,7 @@ ALLOW_UNICODE_SLUGS = True
 
 STATIC_URL = '/static/'
 
-
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
  # Cors 
 
 #CORS_ORIGIN_ALLOW_ALL = True

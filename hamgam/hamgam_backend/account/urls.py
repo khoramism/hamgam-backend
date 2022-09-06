@@ -13,5 +13,8 @@ urlpatterns = [
     #path('', include('authemail.urls')),
     path('user/all', views.AccountUsersListView.as_view(), ),
     path('user/<int:pk>/', views.AccountDetailView.as_view(), ),
-    
+    #path('', include('rest_auth.urls')),
+    path('', include('rest_auth.urls')),
+    path('',include('rest_email_auth.urls')),
+
 ]
