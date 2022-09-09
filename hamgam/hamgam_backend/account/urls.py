@@ -12,6 +12,7 @@ urlpatterns = [
     #path('login/', views.UserLoginApiView.as_view()),
     #path('', include('authemail.urls')),
     path('user/all', views.AccountUsersListView.as_view(), ),
+    path('user/<int:pk>/update', views.AccountUpdateView.as_view(), ),
     path('user/<int:pk>/', views.AccountDetailView.as_view(), ),
     #path('', include('rest_auth.urls')),
     path('', include('rest_auth.urls')),

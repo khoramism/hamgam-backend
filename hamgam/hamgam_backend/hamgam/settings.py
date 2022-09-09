@@ -177,7 +177,7 @@ DEFAULT_FROM_EMAIL = 'info@ham-ghadam.ir'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 ##### SWAGGER 
-LOGIN_URL = 'https://ham-ghadam.ir/login'
+LOGIN_URL = '/api/accounts/login'
 
 # URL 
 ALLOW_UNICODE_SLUGS = True
