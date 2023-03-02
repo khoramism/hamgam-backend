@@ -6,7 +6,7 @@ FROM_EMAIL = 'alireza@ham-ghadam.ir'
 FROM_NAME = 'ALirexza'
 TO_NAME = 'ghol bolbol'
 SUBJECT = f'BADbiodyacjsapcj'
-HTML_TEMPLATE = '/home/mehdi/source/Back/hamgam-backend/hamgam/hamgam_backend/kir.html'
+HTML_TEMPLATE = '/home/mehdi/source/Back/hamgam-backend/hamgam/hamgam_backend/email.html'
 def send_email():
     sender = FROM_EMAIL
     receiver = ["momom58856@zfobo.com", 'khoramism@gmail.com', 'alirezakhoramimn@gmail.com', 'hamghadam.ir@gmail.com', 'elmamot.abo@gmail.com','elmamot.abo1@gmail.com'] # emails in list for multiple or just a string for single.
