@@ -31,7 +31,7 @@ SECRET_KEY ='lacaa612c*sac56a1212^#&2de2d4w86'
 DEBUG = True
 
 #<<<<<<< HEAD
-ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir', 'localhost']
+ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir', 'localhost', '0.0.0.0']
 #=======
 #ALLOWED_HOSTS = ['0.0.0.0']
 #>>>>>>> 65426fe87fbeacbf765924ede6849e747392e57c

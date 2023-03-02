@@ -12,3 +12,4 @@ django-extensions
 Pillow
 autopep8
 django-ckeditor 
+drf_yasg

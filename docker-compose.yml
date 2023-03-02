@@ -1,7 +1,24 @@
 version: "3.9"
 services:
-  web:
-    build: ./app
-    command: python /code/manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres:14.1-alpine
+    container_name: db
+    ports:
+      - 55432:5432/tcp
+    environment:
+      POSTGRES_DB: hamgam
+      POSTGRES_USER: hamgam_user
+      POSTGRES_PASSWORD: appdbpassword
     volumes:
-    - .:/codev
+      - ./data/db:/var/lib/postgres
+
+  web:
+    build: ./
+    ports:
+      - "8049:8049"
+    #command: python /code/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/app/
+    depends_on:
+      - db
