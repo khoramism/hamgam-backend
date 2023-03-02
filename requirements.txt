@@ -1,6 +1,5 @@
 coverage
 django-debug-toolbar
-selenium
 django 
 djangorestframework
 python-dotenv

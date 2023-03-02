@@ -31,7 +31,7 @@ SECRET_KEY ='lacaa612c*sac56a1212^#&2de2d4w86'
 DEBUG = True
 
 #<<<<<<< HEAD
-ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir']
+ALLOWED_HOSTS = ['ham-ghadam.ir', 'www.ham-ghadam.ir', 'localhost']
 #=======
 #ALLOWED_HOSTS = ['0.0.0.0']
 #>>>>>>> 65426fe87fbeacbf765924ede6849e747392e57c
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # External 
-    "debug_toolbar",
+    #"debug_toolbar",
     'rest_framework',
     'rest_framework.authtoken',
     #'rest_framework_swagger',
@@ -57,8 +57,8 @@ INSTALLED_APPS = [
     # CORS
     'corsheaders',
     'django_extensions',
-    'rest_email_auth',
-    'rest_auth',
+    #'rest_email_auth',
+    #'rest_auth',
     # Internal 
     'account.apps.AccountConfig',
     'idea.apps.IdeaConfig',
@@ -75,9 +75,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-
     "django.middleware.csrf.CsrfViewMiddleware",    # Debug toolbar  
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    #"debug_toolbar.middleware.DebugToolbarMiddleware",
     # LEAKED PASSWORDS 
     'pwned_passwords_django.middleware.PwnedPasswordsMiddleware',
     # CORS
@@ -118,24 +117,25 @@ if DEBUG:
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'hamgam',
-       'USER': 'hamnghadams',
-       'PASSWORD': 'v2ct197DWAC3*eRO',
-       'HOST': 'localhost',
-       'PORT': 5432,
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
-# Password validation
+#DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.postgresql',
+#       'NAME': 'hamgam',
+#       'USER': 'hamnghadams',
+#       'PASSWORD': 'v2ct197DWAC3*eRO',
+#       'HOST': 'localhost',
+#       'PORT': 5432,
+#   }
+#}
+#
+## Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 STATIC_URL = '/static/'
 
@@ -208,10 +208,7 @@ CORS_ALLOWED_ORIGINS = [
     #"https://sub.example.com",\
     "http://localhost:8080",
 #    "http://localhost",
-#    "http://144.76.186.13",
 #    "http://localhost:80",
-#    "http://144.76.186.13:80",
-    #"144.76.186.13"
     #"http://127.0.0.1:9000",
 ]
 
@@ -272,7 +269,7 @@ LOGGING = {
 
 
 AUTHENTICATION_BACKENDS = [
-    'rest_email_auth.authentication.VerifiedEmailBackend',
+    #'rest_email_auth.authentication.VerifiedEmailBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -304,10 +301,10 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'alireza@ham-ghadam.ir'
 #SERVER_EMAIL = 'info@ham-ghadam.ir'
 
-REST_EMAIL_AUTH = {
-    'EMAIL_VERIFICATION_URL': 'https://ham-ghadam.ir/verify/{key}',
-    "PASSWORD_RESET_URL": 'https://ham-ghadam.ir/reset-password/{key}',
-}
+#REST_EMAIL_AUTH = {
+#    'EMAIL_VERIFICATION_URL': 'https://ham-ghadam.ir/verify/{key}',
+#    "PASSWORD_RESET_URL": 'https://ham-ghadam.ir/reset-password/{key}',
+#}
 
 
 
